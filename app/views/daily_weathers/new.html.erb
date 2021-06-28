@@ -1,0 +1,22 @@
+<h1>New Daily Weather</h1>
+
+<%= render 'form', daily_weather: @daily_weather %>
+
+<%= link_to 'Back', daily_weathers_path %>
+
+<%  @temps_each_day = Hash.new %>
+ <%  @output["data"]["weather"].each do |weather|
+      date = weather["date"] 
+      store_temps = []
+      weather["hourly"].each do |hourly_temp|
+        store_temps.push(hourly_temp["tempF"])
+        temperature = hourly_temp["tempF"]
+        time_hours = hourly_temp["time"]
+        @dw = DailyWeather.new(date: date, time: time_hours, temperature: temperature)
+        @dw.save
+      end
+      @temps_each_day.store(date, store_temps)
+    end 
+%>
+    <%= @temps_each_day %>
+    <%= @dw %>

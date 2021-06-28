@@ -1,0 +1,57 @@
+
+
+
+
+<div id="container" style="height: 400px; min-width: 310px">
+<%= javascript_include_tag 'high_chart_try' %>
+
+</div>
+
+<div>
+  <% @daily_weathers = DailyWeather.all %>
+  <% @big_list = []	%>
+ <% @daily_weathers.each do |daily_weather| 
+ 	  small_list = []
+      small_list.push(daily_weather.time.to_i)
+      small_list.push(daily_weather.temperature.to_i)
+      @big_list.push(small_list)
+    end %>
+
+  <% @big_list %>
+</div>
+
+<script type="text/javascript">
+
+	console.log(tempy)
+
+
+	Highcharts.getJSON('https://demo-live-data.highcharts.com/aapl-c.json', function (data) {
+    // Create the chart
+    Highcharts.stockChart('container', {
+
+
+        rangeSelector: {
+            selected: 1
+        },
+
+        title: {
+            text: 'Weather'
+        },
+
+        series: [{
+            name: 'AAPL',
+            data: data,
+            tooltip: {
+                valueDecimals: 2
+            }
+        }]
+    });
+});
+
+
+</script>
+
+
+
+
+

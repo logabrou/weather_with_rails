@@ -1,0 +1,25 @@
+<script src="/assets/jquery.js"></script>
+<script src="http://code.highcharts.com/stock/highstock.js"></script>
+<script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
+<h1>Start</h1>
+<div id="container" style="width:100%;height:400px;"></div>
+<script>  
+
+$(document).ready(function() {
+    options = {
+        chart: {
+            renderTo: 'container',
+            type: 'spline'
+        },
+        series: [{}]
+    };
+    $.getJSON('data', function(data) {
+        options.series = highchart_data;
+        new Highcharts.Chart(options);
+    });
+
+});
+
+
+
+

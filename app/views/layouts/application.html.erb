@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Weather</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+
+
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/data.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_path 'application', 'data-turbolinks-track': 'reload' %>
+
+
+    
+   
+  </head>
+
+  <body>
+
+    <%= render 'home/navbar' %>
+    <!-- Yield web page to screen -->
+    <div class="container">
+          <%= yield %>
+    </div>
+
+    <!--  yield :page_scripts  -->
+
+
+
+  </body>
+</html>

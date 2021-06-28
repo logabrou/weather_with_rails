@@ -1,0 +1,25 @@
+<div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Weather App</h1>
+            <p class="lead">
+                This is the current temperature for Austin.
+            </p>
+             <button class="btn btn-warning" type="submit">Search</button>
+        </div>
+    </div>
+
+<% @temps_each_day = Hash.new %>
+<% @output["data"]["weather"].each do |daily_weather|
+	temps_each_day_key = daily_weather["date"] 
+	store_temps = []
+	daily_weather["hourly"].each do |hourly_temp|
+		store_temps.push(hourly_temp["tempF"])
+	end
+	@temps_each_day.store(temps_each_day_key, store_temps)
+end %>
+
+ <%= @temps_each_day %>
+
+
+
+ 

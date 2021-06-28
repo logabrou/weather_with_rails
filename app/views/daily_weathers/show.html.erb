@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @daily_weather.date %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @daily_weather.time %>
+</p>
+
+<p>
+  <strong>Temperature:</strong>
+  <%= @daily_weather.temperature %>
+</p>
+
+ <!-- javascript_include_tag "daily_weathers"  -->
+
+<%= link_to 'Edit', edit_daily_weather_path(@daily_weather) %> |
+<%= link_to 'Back', daily_weathers_path %>
